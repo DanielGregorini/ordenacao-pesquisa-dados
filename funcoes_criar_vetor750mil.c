@@ -3,10 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define TAM 750000
 
 void CriarVetorDe750Mil(int vetor750mil[])
 {
+
+  int TAM = 750000;
   FILE *arquivo;
   int tipoDeVetor = 0;
   int posicao = 0;
@@ -104,12 +105,17 @@ void CriarVetorDe750Mil(int vetor750mil[])
 
       break;
 
+    case 10:
+      return;
+      break;
+
     default:
       printf("Voltando ao menu principal...\n\n");
       break;
     }
     tipoDeVetor = 10;
   }
+
   imprimirVetor(vetor750mil, 1000);
   p(1);
 }

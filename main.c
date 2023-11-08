@@ -11,20 +11,17 @@
 // arquivos
 #include "arquivos.c"
 #include "header.h"
-#define TAM 1000
 
 int main(void)
 {
-
-
     CriarArquivosAleatorio();
+
     // PARA O CONSOLE SUPORTAR ACENTOS
     UINT CPAGE_UTF8 = 65001;
     UINT CPAGE_DEFAULT = GetConsoleOutputCP();
     SetConsoleOutputCP(CPAGE_UTF8);
 
-    int vetor[TAM];
-
+    // cria vetor de 500mil
     int *vetor500Mil = (int *)malloc(500000 * sizeof(int));
     if (vetor500Mil == NULL)
     {
@@ -32,6 +29,7 @@ int main(void)
         return 1;
     }
 
+    // cria vetor de 750mil
     int *vetor750Mil = (int *)malloc(750000 * sizeof(int));
     if (vetor750Mil == NULL)
     {
@@ -40,8 +38,9 @@ int main(void)
         return 1;
     }
 
+    // cria vetor de 1 milhão
     int *vetor1M = (int *)malloc(1000000 * sizeof(int));
-    if (vetor1M == NULL) 
+    if (vetor1M == NULL)
     {
         printf("Erro na alocação de memória para vetor1M.\n");
         free(vetor500Mil);
@@ -69,6 +68,7 @@ int main(void)
 
         switch (menu)
         {
+
         case 1:
             CriarVetorDe500Mil(vetor500Mil);
             break;
@@ -79,17 +79,16 @@ int main(void)
             CriarVetorDe1M(vetor1M);
             break;
         case 4:
-
-            OrdenarSubMenu(vetor, vetor500Mil, vetor750Mil, vetor1M);
+            OrdenarSubMenu(vetor500Mil, vetor750Mil, vetor1M);
             break;
         case 5:
             menuDePesquisaSubMenu(vetor500Mil, vetor750Mil, vetor1M);
-
             break;
-
-        
+        case 6:
+            printf("\nPROGRAMA FECHADO...\n\n");
+            break;
         default:
-            printf("Opção inválida!!\n\n");
+            printf("\n\n");
             break;
         }
     }

@@ -12,10 +12,7 @@
 #endif
 #include "header.h"
 
-void merge(int vetor[], int esq, int meio, int dir);
-void mergesort(int vetor[], int esq, int dir);
-
-void OrdenarSubMenu(int vetorTeste[], int vetor500mil[], int vetor750mil[], int vetor1m[])
+void OrdenarSubMenu(int vetor500mil[], int vetor750mil[], int vetor1m[])
 {
 
   // calculo de tempo
@@ -276,7 +273,6 @@ void OrdenarSubMenu(int vetorTeste[], int vetor500mil[], int vetor750mil[], int 
 
 void insertsort(int vetor[], int tam)
 {
-
   printf("\n--Começando a ordenação--\n\n");
 
   struct timeval inicio, fim;
@@ -284,7 +280,6 @@ void insertsort(int vetor[], int tam)
   gettimeofday(&inicio, NULL);
 
   int aux, y;
-  clock_t inicio_clock = clock(), fim_clock;
 
   for (int x = 1; x < tam; x++)
   {
@@ -302,10 +297,8 @@ void insertsort(int vetor[], int tam)
   gettimeofday(&fim, NULL);
 
   double tempo = (fim.tv_sec - inicio.tv_sec) + (fim.tv_usec - inicio.tv_usec) / 1000000.0;
-  fim_clock = clock();
-  double tempo_clock = (double)(fim_clock - inicio_clock) / CLOCKS_PER_SEC;
-  printf("Tempo de ordenação em clock: %.7f segundos\n", tempo_clock);
   printf("Tempo de ordenação usando método gettime: %.7f segundos\n", tempo);
+
 }
 
 void bubblesort(int vetor[], int tam)
@@ -339,9 +332,7 @@ void selectionsort(int vetor[], int tam)
 
   gettimeofday(&inicio, NULL);
 
-  clock_t inicio_clock = clock(), fim_clock;
 
-  gettimeofday(&inicio, NULL);
   int i, j, posicaoMenor, menorValor;
 
   for (i = 0; i < tam - 1; i++)
@@ -366,25 +357,18 @@ void selectionsort(int vetor[], int tam)
   gettimeofday(&fim, NULL);
 
   double tempo = (fim.tv_sec - inicio.tv_sec) + (fim.tv_usec - inicio.tv_usec) / 1000000.0;
-  fim_clock = clock();
-  double tempo_clock = (double)(fim_clock - inicio_clock) / CLOCKS_PER_SEC;
-  printf("Tempo de ordenação em clock: %.7f segundos\n", tempo_clock);
-
   printf("Tempo de ordenação usando método gettime: %.7f segundos\n", tempo);
 
-  imprimirVetor(vetor, 1000);
+  //teste se a ordenação funcionou
+  //imprimirVetor(vetor, 1000);
 }
 
 void shellsort(int vetor[], int tam)
 {
-
-  // imprimirVetor(vetor, 2000);
   printf("\n--Começando a ordenação--\n\n");
   struct timeval inicio, fim;
 
   gettimeofday(&inicio, NULL);
-
-  clock_t inicio_clock = clock(), fim_clock;
 
   int h, i, j, aux;
 
@@ -411,9 +395,6 @@ void shellsort(int vetor[], int tam)
   gettimeofday(&fim, NULL);
 
   double tempo = (fim.tv_sec - inicio.tv_sec) + (fim.tv_usec - inicio.tv_usec) / 1000000.0;
-  fim_clock = clock();
-  double tempo_clock = (double)(fim_clock - inicio_clock) / CLOCKS_PER_SEC;
-  printf("Tempo de ordenação em clock: %.7f segundos\n", tempo_clock);
 
   printf("Tempo de ordenação usando método gettime: %.7f segundos\n", tempo);
 
@@ -597,6 +578,9 @@ void radixsort(int vetor[], int TAM)
   free(C);
 }
 
+////////////////////////////////////////////////////////////////////
+
+////////////////////Heap Sort////////////////////////////////
 
 void heapify_down(int *array, int i, int tamanho)
 {
@@ -636,6 +620,7 @@ void heapsort(int *array, int tamanho)
 }
 
 /////////////////////////////////////////////////////////////////
+//////////////////////---Funções--////////////////////////////
 
 void imprimirVetor(int vetor[], int tam)
 {
@@ -646,6 +631,10 @@ void imprimirVetor(int vetor[], int tam)
   }
   return;
 }
+
+//cria os arquivos aleatorios no começo do programa 
+//para que todos os algoritmos tenham o mesmo
+//conjuntio de dados
 
 void CriarArquivosAleatorio()
 {
@@ -679,6 +668,7 @@ void CriarArquivosAleatorio()
   fclose(arquivo);
 }
 
+//limpa tela
 void ll()
 {
 // funcao para limpar tela
@@ -691,6 +681,7 @@ void ll()
 #endif
 }
 
+//pausa tela
 void p(double tempo)
 {
 #ifdef __linux__
